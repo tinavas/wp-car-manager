@@ -43,13 +43,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</div>
 								</td>
 								<td class="slug column-slug"><?php echo $item['slug']; ?></td>
-								<td class="posts column-configure">
+								<td class="column-configure">
 									<a href="<?php echo add_query_arg( array( 'make' => $item['id'] ), admin_url( 'edit.php?post_type=wpcm_vehicle&page=wpcm-makes' ) ); ?>"
-									   class="dashicons dashicons-admin-generic wpcm-btn-configure"
-									   title="Configure Models"></a>
+									   class="dashicons dashicons-admin-generic wpcm-btn-configure wpcm-has-tip"
+									   title="<?php _e( 'Configure Models', 'wp-car-manager' ); ?>"></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
+					<?php else : ?>
+						<tr class="no-items">
+							<td class="colspanchange" colspan="3"><?php _e( 'No Makes found', 'wp-car-manager' ); ?></td>
+						</tr>
 					<?php endif; ?>
 					</tbody>
 
@@ -67,8 +71,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 		<div id="col-left">
 			<div class="col-wrap">
+
+				<div class="wpcm-makes-explanation">
+					<h2><?php _e( 'What are Makes?', 'wp-car-manager' ); ?></h2>
+					<p><?php _e( "On this page you manage your vehicles makes. You can add a new make with the form below and manage your existing makes on the right. To manage a make’s models, click the wheel button.", 'wp-car-manager' ); ?></p>
+					<p><a href="https://www.wpcarmanager.com/kb/makes-models/?utm_source=plugin&utm_medium=link&utm_campaign=makes" target="_blank"><?php _e( 'You can read more about Makes and Models here', 'wp-car-manager' ); ?></a></p>
+				</div>
+
 				<div class="form-wrap">
-					<h3><?php _e( 'Add New Make', 'wp-car-manager' ); ?></h3>
+					<h2><?php _e( 'Add New Make', 'wp-car-manager' ); ?></h2>
 
 					<form id="add-make" method="post"
 					      action="<?php echo admin_url( 'edit.php?post_type=wpcm_vehicle&page=wpcm-makes' ) ?>">

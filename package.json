@@ -1,17 +1,20 @@
 {
   "name": "wp-car-manager",
   "title": "WP Car Manager",
-  "version": "1.0.0",
+  "version": "1.4.3",
   "homepage": "http://www.wpcarmanager.com/",
   "repository": {
     "type": "git",
     "url": "https://github.com/barrykooij/wp-car-manager"
   },
   "main": "Gruntfile.js",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-uglify": "~0.5.1",
-    "grunt-sass": "^0.17.0",
+    "grunt-sass": "^1.1.0",
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-shell": "~0.7.0",
     "grunt-contrib-watch": "~0.6.1",

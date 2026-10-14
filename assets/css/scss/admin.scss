@@ -6,7 +6,7 @@
   #menu-posts-wpcm_vehicle {
     .wp-menu-image:before {
       font-family: "wp-car-manager" !important;
-      content: "\e800" ;
+      content: "\e800";
       font-size: 1.1em !important;
       line-height: 1.3em;
     }
@@ -33,6 +33,9 @@
       tbody {
         th, td {
           height: 41px;
+        }
+        td.column-configure {
+          text-align: right;
         }
         .wpcm-btn-configure {
           border: 1px solid #cccccc;
@@ -71,13 +74,16 @@
 }
 
 /** Car Data Meta Box **/
-#wpcm-car-data {
+#wpcm-car-data, #wpcm-listing-data {
   .inside {
     @include clearfix();
     table {
-      width: 50%;
+      width: 100%;
       margin: 0;
       float: left;
+      @media ( max-width: 668px ) {
+          width: 100% !important;
+      }
 
       th {
         width: 30%;
@@ -85,14 +91,21 @@
       }
       td {
         padding: 5px 20px;
-        input, select {
+        input.wpcm-text, input.wpcm-date-field, select {
           width: 100%;
         }
       }
     }
   }
 
+}
 
+#wpcm-car-data {
+  .inside {
+    table {
+      width: 50%;
+    }
+  }
 
 }
 
@@ -112,7 +125,7 @@
 
         @include clearfix();
 
-        &>li {
+        & > li {
           width: 80px;
           float: left;
           cursor: move;
@@ -154,7 +167,6 @@
 
                 position: relative;
 
-
               }
 
               a.delete {
@@ -162,11 +174,11 @@
                 font-size: 1.4em;
 
                 &:before {
-                  @include icon( "\e802" );
+                  @include icon("\e802");
                   color: white;
                   background-color: #000;
-                  border-radius:100%;
-                  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                  border-radius: 100%;
+                  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
                   font-size: 12px;
                   line-height: 18px;
                 }
@@ -182,6 +194,19 @@
           ul.actions {
             display: block;
           }
+        }
+
+        li.wpcm-sortable-placeholder {
+          border: 3px dashed #dddddd;
+          position: relative;
+
+          &:after {
+            @include icon("\e806");
+            font-size: 2.618em;
+            line-height: 72px;
+            color: #ddd;
+          }
+
         }
 
       }
@@ -202,6 +227,15 @@
       float: right;
     }
   }
+
+  #settings-available-extensions {
+    display: block;
+  }
+
+  #settings-installed-extensions {
+    display: none;
+  }
+
   .wpcm-extensions {
     padding: 15px 0;
     overflow: hidden;
@@ -279,3 +313,126 @@
   }
 
 }
+
+/** Overview page */
+.post-type-wpcm_vehicle {
+  .wp-list-table {
+    .column-image {
+      width: 45px;
+    }
+
+    .column-expires {
+      width: 15%;
+    }
+
+    .column-make, .column-model {
+      width: 12%;
+    }
+
+    .column-price, .column-mileage, .column-frdate {
+      width: 10%;
+    }
+
+    .column-actions {
+      width: 7%;
+      text-align: right;
+
+      a.wpcm-btn-approve {
+        padding-left: 8px;
+        padding-right: 8px;
+
+        &:before {
+        font-family: "wp-car-manager" !important;
+        content: "\e808";
+        //font-size: 1.1em !important;
+        //line-height: 1.3em;
+        }
+      }
+    }
+
+    .wpcm-admin-image-header {
+      display: block;
+      position: relative;
+      width: 40px;
+      height: 19px;
+      &:after {
+        @include icon("\e806");
+        font-size: 1.2em;
+        color: #ddd;
+        line-height: 1.3em;
+      }
+    }
+    .wpcm-admin-image {
+      max-width: 40px;
+      max-height: 40px;
+      border: 1px solid #eee;
+    }
+
+    @media screen and (max-width: 782px) {
+      th.column-image {
+        display: none;
+      }
+      .column-primary .toggle-row {
+        top: -53px;
+      }
+      .column-primary {
+        overflow: visible !important;
+      }
+    }
+  }
+}
+
+.settings_panel {
+  .wpcm-description {
+    font-style: italic;
+  }
+}
+
+.wpcm-onboarding {
+
+  .wpcm-onboarding-pages {
+    width: 100%;
+
+    th,td {
+      padding: .5em 0;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      text-align: left;
+    }
+  }
+
+  #wpcm-extensions,
+  #wpcm-never5 {
+    width: 48%;
+    float: left;
+  }
+
+  #wpcm-never5 {
+    padding-right: 2%;
+  }
+
+  #wpcm-extensions {
+    padding-left: 2%;
+  }
+
+  #wpcm-whats-next {
+    width: 100%;
+  }
+
+
+}
+
+.wpcm-taxonomy-explanation,
+.wpcm-makes-explanation,
+.wpcm-models-explanation {
+  margin-bottom: 40px;
+}
+
+/* Settings */
+a.nav-tab:focus {
+  box-shadow: none;
+}
+
+@import "tipped";
+@import "jquery-ui";

@@ -23,7 +23,8 @@ jQuery( function ( $ ) {
         } );
     } );
 
-    $( '#frdate' ).datepicker( {
+    $( '.wpcm-date-field' ).datepicker( {
+	    yearRange: "1910:+1",
         dateFormat: 'yy-mm-dd',
         changeMonth: true,
         changeYear: true
@@ -90,6 +91,7 @@ jQuery( function ( $ ) {
         items: 'li.image',
         cursor: 'move',
         scrollSensitivity: 40,
+        placeholder : 'wpcm-sortable-placeholder',
         forcePlaceholderSize: true,
         forceHelperSize: false,
         helper: 'clone',

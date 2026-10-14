@@ -25,6 +25,15 @@ class Manager {
 	}
 
 	/**
+	 * @param string $action
+	 *
+	 * @return string
+	 */
+	public static function get_ajax_url( $action ) {
+		return untrailingslashit( home_url( sprintf( '?%s=%s', self::ENDPOINT, $action ) ) );
+	}
+
+	/**
 	 * Add AJAX actions
 	 */
 	private function add_ajax_actions() {
@@ -36,6 +45,47 @@ class Manager {
 		// register GetModels
 		$get_models = new GetModels();
 		$get_models->register();
+
+		// register GetModels
+		$get_models_submit = new GetModelsSubmit();
+		$get_models_submit->register();
+
+		// register SaveVehicle
+		$save_vehicle = new SaveVehicle();
+		$save_vehicle->register();
+
+		// register SaveImages
+		$save_images = new SaveImages();
+		$save_images->register();
+
+		// register DeleteImage
+		$delete_image = new DeleteImage();
+		$delete_image->register();
+
+		// register GetDashboard
+		$get_dashboard = new GetDashboard();
+		$get_dashboard->register();
+
+		// register DeleteVehicle
+		$delete_vehicle = new DeleteVehicle();
+		$delete_vehicle->register();
+
+		// register CreatePage
+		$create_page = new CreatePage();
+		$create_page->register();
+
+		// register DismissNotice
+		$dismiss_notice = new DismissNotice();
+		$dismiss_notice->register();
+
+		// register GetProfile
+		$get_profile = new GetProfile();
+		$get_profile->register();
+
+		// register SaveProfile
+		$save_profile = new SaveProfile();
+		$save_profile->register();
+
 	}
 
 	/**
